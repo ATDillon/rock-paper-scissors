@@ -34,8 +34,13 @@ function computerPlay(){
 }
 function playerSelection(){
 
-    let fillerVar = "paper";
-    return(fillerVar);
+    let choice = window.prompt("Rock, paper, or scissors?").toLowerCase();
+    
+    while(choice != "rock" && choice != "paper" && choice != "scissors"){
+        choice = window.prompt("Error, please only input rock, paper, or scissors.").toLowerCase();
+    }
+
+    return(choice);
 
 }
 function playRound(playerChoice, comChoice){
@@ -58,9 +63,6 @@ function playRound(playerChoice, comChoice){
         return("COM wins");
     }
     
-
-
-
 }
 
 /* function for rock/paper/scissors that takes an argument for

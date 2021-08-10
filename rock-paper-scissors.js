@@ -1,3 +1,9 @@
+game(5);
+
+/* Function for the rock/paper/scissors game to be played in the console
+ that takes an argument for the total number of rounds to be played
+ and gives a winner at the end of all rounds*/
+
 function game(rounds){
 
     let playerScore = 0,
@@ -5,44 +11,69 @@ function game(rounds){
     winState = "";
 
     for (let i = 1; i <= rounds; i++){
+
         console.log("Round "+ i)
         winState = playRound(playerSelection(), computerPlay());
 
         if (winState === "Player wins"){
+
             ++playerScore;
+
         }
         else if (winState ==="COM wins"){
+
             ++comScore;
+
         }
     }
 
     if (playerScore === comScore){
+
         console.log("It's a tie this time! The score was " + playerScore + " to " + comScore)
+
     }
     else if (playerScore > comScore){
+
         console.log("You've won! The score was " + playerScore + " to " + comScore);
+
     }
     else{
-        console.log("Better luck next time, you've lost. The score was " + playerScore + " to " + comScore)
+
+        console.log("Better luck next time, you've lost. The score was " + playerScore + " to " + comScore);
+
     }
 }
+
+/*Function for deciding the COMs selection. Picks an integer 0-2 and
+ returns the string located at that location in the array. */
+
 function computerPlay(){
 
     const choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random()*3)];
 
 }
+
+/*Function for getting the players choice of rock, paper, or scissors. 
+ Any input outside of those three words will repeat the prompt.*/
+
 function playerSelection(){
 
     let choice = window.prompt("Rock, paper, or scissors?").toLowerCase();
     
     while(choice != "rock" && choice != "paper" && choice != "scissors"){
-        choice = window.prompt("Error, please only input rock, paper, or scissors.").toLowerCase();
+
+        choice = window.prompt("Error: Please only input rock, paper, or scissors.").toLowerCase();
+
     }
 
     return(choice);
 
 }
+
+/*Function for playing each individual round. Compares selections and
+ returns the result of each round. */
+
 function playRound(playerChoice, comChoice){
 
     if (playerChoice === comChoice){
@@ -64,61 +95,3 @@ function playRound(playerChoice, comChoice){
     }
     
 }
-
-/* function for rock/paper/scissors that takes an argument for
-the total number of rounds to be played*/
-
-    //create variables playerScore and comScore starting at 0.
-    // for num in rounds argument
-
-        /*run winstate function with com ouput function
-         and player input function as arguments*/
-        
-    //if playerScore is equal to comScore
-
-        //output that it's a tie
-
-    //else if playerScore is greater than comScore
-
-        //output that the player has won
-
-    //else
-    
-        //output that the computer has won
-
-//function for deciding the COMs output
-
-    // create array containing 'rock' 'paper' and 'scissors'
-    // randomly generate an integer 0-2 inclusively
-    // return the string stored at that location in the array
-
-/*function that gets players input and checks that it is rock
-paper or scissors */
-
-    //get text input and store in a variable
-    //if lowercase text input is not equal to 'rock', 'paper', or 'scissors'
-
-        //while input is not rock paper or scissors
-
-            //output error message
-            //repeat input
-
-    //return lowercase players input
-
-
-/*function that checks if its a winning combination,
- taking the com output function and player input function as arguments*/
-
-    // if players input is equal to coms output
-
-        //output that it was a tie
-    
-    // else if it is a winning combination
-
-        //output that the player won and tell them the coms choice
-        //add +1 to playerScore variable
-
-    // else
-
-        //output that the player lost and tell them the coms choice
-        //add +1 to comScore variable

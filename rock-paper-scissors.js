@@ -1,6 +1,7 @@
 let playerScore = 0,
 comScore = 0;
 
+
 playerSelection();
 
 /* Function for the rock/paper/scissors game to be played in the console
@@ -8,26 +9,36 @@ playerSelection();
 
 function game(winState){
 
+    const resultOutput = document.getElementById("final"),
+    runningScore = document.getElementById("running-score");
+
     if (winState === "Player wins"){
 
         ++playerScore;
+        runningScore.textContent = `${playerScore} - ${comScore}`;
 
     }
     else if (winState ==="COM wins"){
 
         ++comScore;
+        runningScore.textContent = `${playerScore} - ${comScore}`;
 
     }
 
     if(playerScore >= 5 || comScore >= 5){
 
+
+
         if (playerScore > comScore){
+
+            resultOutput.textContent = "You've won! The score was " + playerScore + " to " + comScore;
 
             console.log("You've won! The score was " + playerScore + " to " + comScore);
             
         }
         else{
 
+            resultOutput.textContent = "Better luck next time, you've lost. The score was " + playerScore + " to " + comScore;
             console.log("Better luck next time, you've lost. The score was " + playerScore + " to " + comScore);
 
         }
@@ -68,21 +79,27 @@ function playerSelection(){
  returns the result of each round. */
 
 function playRound(playerChoice, comChoice){
+    
+    const roundResult = document.getElementById("round-result");
 
     if (playerChoice === comChoice){
+
+        roundResult.textContent = `Both you and the computer chose ${playerChoice}, it's a tie`;
 
         console.log("Computer chose " + comChoice + "! It's a tie this round!")
         return("Tie");
 
     }
-    else if ((playerChoice==="paper" && comChoice==="rock") || (playerChoice==="rock" && comChoice==="scissors") || (playerChoice==="scissors" && comChoice==="rock")){
+    else if ((playerChoice==="paper" && comChoice==="rock") || (playerChoice==="rock" && comChoice==="scissors") || (playerChoice==="scissors" && comChoice==="paper")){
 
+        roundResult.textContent = `COM chose ${comChoice}, and ${playerChoice} beats ${comChoice}`
         console.log("Computer chose " + comChoice + "! You win this round!")
         return("Player wins");
 
     }
     else{
 
+        roundResult.textContent = `You chose ${playerChoice}, and ${comChoice} beats ${playerChoice}`
         console.log("Computer chose " + comChoice + "! You lose this round!")
         return("COM wins");
     }

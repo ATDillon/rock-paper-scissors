@@ -33,12 +33,12 @@ function game(winState){
 
             resultOutput.textContent = "You've won! The score was " + playerScore + " to " + comScore;
 
-            console.log("You've won! The score was " + playerScore + " to " + comScore);
+            console.log("Congrats, you've won!");
             
         }
         else{
 
-            resultOutput.textContent = "Better luck next time, you've lost. The score was " + playerScore + " to " + comScore;
+            resultOutput.textContent = "Better luck next time, you've lost.";
             console.log("Better luck next time, you've lost. The score was " + playerScore + " to " + comScore);
 
         }

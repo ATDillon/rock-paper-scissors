@@ -10,7 +10,8 @@ playerSelection();
 function game(winState){
 
     const resultOutput = document.getElementById("final"),
-    runningScore = document.getElementById("running-score");
+    runningScore = document.getElementById("running-score"),
+    rpsButtons = document.querySelectorAll("button");
 
     if (winState === "Player wins"){
 
@@ -27,7 +28,9 @@ function game(winState){
 
     if(playerScore >= 5 || comScore >= 5){
 
-
+        rpsButtons.forEach((button) => {
+            button.disabled = true;
+        });
 
         if (playerScore > comScore){
 

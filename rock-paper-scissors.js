@@ -31,7 +31,7 @@ function game(winState){
 
         if (playerScore > comScore){
 
-            resultOutput.textContent = "You've won! The score was " + playerScore + " to " + comScore;
+            resultOutput.textContent = "You've won!";
 
             console.log("Congrats, you've won!");
             

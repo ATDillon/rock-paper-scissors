@@ -10,8 +10,7 @@ playerSelection();
 function game(winState){
 
     const resultOutput = document.getElementById("final"),
-    runningScore = document.getElementById("running-score"),
-    rpsButtons = document.querySelectorAll("button");
+    runningScore = document.getElementById("running-score");
 
     if (winState === "Player wins"){
 
@@ -28,9 +27,6 @@ function game(winState){
 
     if(playerScore >= 5 || comScore >= 5){
 
-        rpsButtons.forEach((button) => {
-            button.disabled = true;
-        });
 
         if (playerScore > comScore){
 
@@ -45,6 +41,8 @@ function game(winState){
             console.log("Better luck next time, you've lost. The score was " + playerScore + " to " + comScore);
 
         }
+
+        disableAndReset();
     }
 }
 
@@ -107,4 +105,36 @@ function playRound(playerChoice, comChoice){
         return("COM wins");
     }
     
+}
+
+function disableAndReset(){
+    const rpsButtons = document.querySelectorAll('button'),
+    resetButton = document.createElement('button');
+
+    resetButton.textContent = "Replay?";
+    resetButton.className = "reset";
+
+    rpsButtons.forEach((button) => {
+        button.disabled = true;
+    });
+
+    document.getElementById('results').appendChild(resetButton);
+
+    resetButton.addEventListener('click', () =>{
+
+        playerScore = 0;
+        comScore = 0;
+        document.getElementById('round-result').textContent = "Best of five will win, choose any option to start!";
+        document.getElementById('running-score').textContent = "0 - 0";
+        document.getElementById('final').textContent = "";
+
+        rpsButtons.forEach((button) => {
+            button.disabled = false;
+        })
+
+        document.getElementById('results').removeChild(resetButton);
+
+    })
+
+
 }

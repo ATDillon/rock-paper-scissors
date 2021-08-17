@@ -31,18 +31,16 @@ function game(winState){
         if (playerScore > comScore){
 
             resultOutput.textContent = "You've won!";
-
-            console.log("Congrats, you've won!");
             
         }
         else{
 
             resultOutput.textContent = "Better luck next time, you've lost.";
-            console.log("Better luck next time, you've lost. The score was " + playerScore + " to " + comScore);
 
         }
 
         disableAndReset();
+
     }
 }
 
@@ -85,40 +83,38 @@ function playRound(playerChoice, comChoice){
 
     if (playerChoice === comChoice){
 
-        roundResult.textContent = `Both you and the computer chose ${playerChoice}, it's a tie`;
-
-        console.log("Computer chose " + comChoice + "! It's a tie this round!")
+        roundResult.textContent = `Both you and COM chose ${playerChoice}, it's a tie`;
         return("Tie");
 
     }
     else if ((playerChoice==="paper" && comChoice==="rock") || (playerChoice==="rock" && comChoice==="scissors") || (playerChoice==="scissors" && comChoice==="paper")){
 
-        roundResult.textContent = `COM chose ${comChoice}, and ${playerChoice} beats ${comChoice}`
-        console.log("Computer chose " + comChoice + "! You win this round!")
+        roundResult.textContent = `COM chose ${comChoice}, ${playerChoice} beats ${comChoice}`
         return("Player wins");
 
     }
     else{
 
-        roundResult.textContent = `You chose ${playerChoice}, and ${comChoice} beats ${playerChoice}`
-        console.log("Computer chose " + comChoice + "! You lose this round!")
+        roundResult.textContent = `COM chose ${comChoice}, ${comChoice} beats ${playerChoice}`
         return("COM wins");
     }
     
 }
 
+/* Disables the rock paper scissors buttons until the game has been reset. */
+
 function disableAndReset(){
+
     const rpsButtons = document.querySelectorAll('button'),
     resetButton = document.createElement('button');
 
     resetButton.textContent = "Replay?";
     resetButton.className = "reset";
+    document.getElementById('results').appendChild(resetButton);
 
     rpsButtons.forEach((button) => {
         button.disabled = true;
     });
-
-    document.getElementById('results').appendChild(resetButton);
 
     resetButton.addEventListener('click', () =>{
 
@@ -134,7 +130,7 @@ function disableAndReset(){
 
         document.getElementById('results').removeChild(resetButton);
 
-    })
+    });
 
 
 }

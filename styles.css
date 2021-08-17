@@ -5,8 +5,16 @@ html, body{
 
 body{
     display: flex;
-    justify-content: center;
+    flex-flow: nowrap column;
+    justify-content: space-around;
     align-items: center;
+}
+
+h1{
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 15vh;
 }
 
 main{
@@ -19,7 +27,8 @@ main{
     grid-gap: 0px;
     width: 100vw;
     height: 20vh;
-    padding-bottom: 25vh;
+    padding-bottom: 50vh;
+    justify-self: center;
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -32,7 +41,8 @@ main{
     font-size: 16px;
     border-color: gold;
     border-radius: 15px;
-    min-width: 100px;
+    min-width: 90px;
+    width: 60%;
     height: 50%;
 }
 
@@ -72,12 +82,10 @@ main{
 
 @media (min-width: 1000px){
 
-    /*
-    main{
-
-        grid-template-columns: 42% 16% 42%;
-
-    } */
+    h1{
+        font-size: 24px;
+        padding-top: 5vh;
+    }
 
     .button{
 
